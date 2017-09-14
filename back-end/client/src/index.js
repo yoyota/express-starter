@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './component/App';
-import BasicRouter from'./component/BasicRouter';
+import FetchDemo from './component/FetchDemo';
 import 'bootstrap/dist/css/bootstrap.css';
 import './css/style.css';
 import './css/bootstrap-social.css';
@@ -11,9 +11,10 @@ const Root = () => {
   return (
     <div>
       <App/>
+      <FetchDemo data={"12345678"}/>
     </div>
   );
 };
 
-ReactDOM.render(<BasicRouter/>, document.getElementById('root'));
+ReactDOM.render(<Root/>, document.getElementById('root'));
 registerServiceWorker();
