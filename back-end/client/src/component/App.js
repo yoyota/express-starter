@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import LoginForm from './loginForm';
+import LoginForm from './LoginForm';
 
 class App extends Component {
   render() {
-    return (
-      <div>
+    const isLoggedIn = false; // TODO isLoggedin check logic
+    if (isLoggedIn) {
+      return (
+        <p>User will see this page after login</p>
+      );
+    } else {
+      return (
+        <div>
         <LoginForm/>
-      </div>
-    );
+        </div>
+      )
+    }
   }
 }
 
