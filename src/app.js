@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
-const api = require('./api');
+const api = require('./api/index');
 const { logger, developmentErrors, productionErrors } = require('./util');
 
 const { NODE_ENV, PORT } = process.env;
