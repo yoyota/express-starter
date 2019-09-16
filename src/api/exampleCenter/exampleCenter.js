@@ -1,4 +1,5 @@
 exports.asyncExample = async (req, res) => {
+  // eslint-disable-next-line no-console
   await setTimeout(() => console.log('async stdout'), 1000)
   res.send('hello async example!')
 }
