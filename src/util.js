@@ -2,7 +2,8 @@ exports.logger = console
 
 const { logger } = this
 
-exports.catchErrors = (fn) => (req, res, next) => fn(req, res, next).catch(next)
+// eslint-disable-next-line promise/no-callback-in-promise
+exports.catchErrors = fn => (req, res, next) => fn(req, res, next).catch(next)
 
 // eslint-disable-next-line no-unused-vars
 exports.developmentErrors = (err, req, res, next) => {
