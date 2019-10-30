@@ -25,8 +25,8 @@ const errorHandler =
   NODE_ENV === "production" ? productionErrors : developmentErrors
 app.use(errorHandler)
 
-app.listen(PORT, () => {
-  logger.info(`Server start! listening on ${PORT}`)
+app.listen(PORT || 5000, () => {
+  logger.info(`Server start! listening on ${PORT || 5000}`)
 })
 
 module.exports = app
