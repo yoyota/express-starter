@@ -7,6 +7,6 @@ test("test root route", async () => {
 })
 
 test("test health route", async () => {
-  const res = await request(app).get("/health")
+  const res = await request(app).get("/healthz")
   expect(res.status).toEqual(204)
 })
