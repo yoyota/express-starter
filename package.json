@@ -1,5 +1,5 @@
 {
-  "name": "back-end",
+  "name": "express-starter",
   "version": "0.1.0",
   "scripts": {
     "dev": "nodemon src/index.js",
