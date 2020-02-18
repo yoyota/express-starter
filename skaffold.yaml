@@ -3,12 +3,20 @@ kind: Config
 build:
   artifacts:
     - image: yoyota/express-starter
+      sync:
+        manual:
+          - src: "src/**/*.js"
+            dest: .
 deploy:
   helm:
     releases:
       - name: express-starter
-        namespace: yoyota
+        namespace: default
         chartPath: helm
+        overrides:
+          develop: true
+          podSecurityContext: null
+          securityContext: null
         setValueTemplates:
           image.repository: "{{.IMAGE_NAME}}"
           image.tag: "{{.DIGEST_HEX}}"
