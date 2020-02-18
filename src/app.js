@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const compression = require("compression")
 const helmet = require("helmet")
+const apiRouter = require("./routes/api")
 
 const app = express()
 
@@ -17,5 +18,7 @@ app.get("/healthz", (_, res) => {
 app.get("/", (_, res) => {
   res.send("home")
 })
+
+app.use("/api", apiRouter)
 
 module.exports = app
