@@ -6,7 +6,7 @@ const apiRouter = require("./routes/api")
 const app = express()
 
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({ extended: true }))
 app.use(compression())
 app.use(helmet())
 
