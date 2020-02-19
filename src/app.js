@@ -1,13 +1,12 @@
 const express = require("express")
-const bodyParser = require("body-parser")
 const compression = require("compression")
 const helmet = require("helmet")
 const apiRouter = require("./routes/api")
 
 const app = express()
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded())
 app.use(compression())
 app.use(helmet())
 
