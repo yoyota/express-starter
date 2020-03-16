@@ -8,17 +8,15 @@ on:
       - v*
 
 jobs:
-  push:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker build . --file Dockerfile --tag image
       - run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
       - run: |
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$VERSION
-          docker tag image $IMAGE_ID:${{ github.sha }}
-          docker push $IMAGE_ID:${{ github.sha }}
-          docker tag image $IMAGE_ID:latest
-          docker push $IMAGE_ID:latest
+          TAG=${{ github.sha }}
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && TAG=$(echo $VERSION | sed -e 's/^v//')
+          IMAGE_NAME=$(echo ${{ github.repository }} | sed -e 's/.*\///')
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME:$TAG
+          docker build . --file Dockerfile --tag $IMAGE_ID
+          docker push $IMAGE_ID
