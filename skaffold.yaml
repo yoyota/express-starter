@@ -17,6 +17,14 @@ deploy:
           develop: true
           podSecurityContext: null
           securityContext: null
+          ingress:
+            enabled: true
+            annotations:
+              kubernetes.io/ingress.class: nginx
+            hosts:
+              - host: express-starter-dev.dudaji.org
+                paths: ["/"]
+            tls: []
         setValueTemplates:
           image.repository: "{{.IMAGE_NAME}}"
           image.tag: "{{.DIGEST_HEX}}"
